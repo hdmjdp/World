@@ -205,7 +205,7 @@ void GetMinimumPhaseSpectrum(const MinimumPhaseAnalysis *minimum_phase) {
   fft_execute(minimum_phase->forward_fft);
 
   // Since x is complex number, calculation of exp(x) is as following.
-  // Note: This FFT library does not keep the aliasing.
+  // Note: This FFT library does not keep the aliasing.  e^(a+i*b) = e^a * e^(i*b) = e^a*(cos(b) + i* sin(b) )拆成实部和虚部
   double tmp;
   for (int i = 0; i <= minimum_phase->fft_size / 2; ++i) {
     tmp = exp(minimum_phase->minimum_phase_spectrum[i][0] /
