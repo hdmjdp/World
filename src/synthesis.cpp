@@ -255,7 +255,8 @@ static int GetPulseLocationsForTimeBase(const double *interpolated_f0,
   }
 
   int number_of_pulses = 0;
-  for (int i = 0; i < y_length - 1; ++i) {
+  for (int i = 0; i < y_length - 1; ++i) {  // // 这里其实在做相位展开，phase unwrapp
+// https://blog.csdn.net/shahuzi/article/details/83038218
     if (wrap_phase_abs[i] > world::kPi) {
       pulse_locations[number_of_pulses] = time_axis[i];
       pulse_locations_index[number_of_pulses] = i;
